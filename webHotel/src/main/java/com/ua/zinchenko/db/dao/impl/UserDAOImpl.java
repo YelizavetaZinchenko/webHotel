@@ -1,7 +1,7 @@
 package com.ua.zinchenko.db.dao.impl;
 
 import com.ua.zinchenko.db.dao.UserDAO;
-import com.ua.zinchenko.db.dao.connection.DBManager;
+import com.ua.zinchenko.db.connection.DBManager;
 import com.ua.zinchenko.db.dao.request.Requests;
 import com.ua.zinchenko.db.models.User;
 import org.apache.log4j.Logger;
@@ -178,7 +178,7 @@ public class UserDAOImpl implements UserDAO {
                 user.setId(rs.getInt("id_user"));
                 user.setEmail(rs.getString("email"));
                 user.setName(rs.getString("name"));
-                user.setAdmin(rs.getBoolean("admin"));
+                user.setAdmin(rs.getBoolean("isAdmin"));
                 user.setPassword(rs.getString("password"));
             }
         } catch (SQLException sqlException) {

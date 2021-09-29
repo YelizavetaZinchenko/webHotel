@@ -16,6 +16,8 @@ public interface RoomDAO {
 
     Room getSuggestedRoomByUserId(int userId);
 
+    Room getBillStatusById(int userId);
+
     List<Room> getRoomByUserId(int userId);
 
     List<Room> getRoomByPrice(double price);

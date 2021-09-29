@@ -38,13 +38,13 @@ public class RoomServlet extends HttpServlet {
         List<Room> roomList = roomDAOImpl.getRoomList();
         String sort = req.getParameter("Sort");
 
-        if (Objects.equals(sort, "Price")) {
+        if (Objects.equals(sort, "Price") || Objects.equals(sort, "Стоимость")) {
             roomList = roomDAOImpl.getRoomListByPrice();
-        } else if (Objects.equals(sort, "Amount Of Seats")) {
+        } else if (Objects.equals(sort, "Amount of seats") || Objects.equals(sort, "Количество мест")) {
             roomList = roomDAOImpl.getRoomListBySeats();
-        } else if (Objects.equals(sort, "Class Of Room")) {
+        } else if (Objects.equals(sort, "Class of room") || Objects.equals(sort, "Класс комнаты")) {
             roomList = roomDAOImpl.getRoomListByClass();
-        } else if (Objects.equals(sort, "Status Of Room")) {
+        } else if (Objects.equals(sort, "Status of room") || Objects.equals(sort, "Статус комнаты")) {
             roomList = roomDAOImpl.getRoomListByStatus();
         }
 

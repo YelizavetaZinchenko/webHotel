@@ -16,6 +16,7 @@ CREATE TABLE room(
     amountOfSeats INT,
     classOfRoom VARCHAR(50) NOT NULL,
     statusOfRoom VARCHAR(50) NOT NULL,
+    bill BOOLEAN NOT NULL,
 	PRIMARY KEY(id_room)
 );
 
@@ -30,10 +31,12 @@ CREATE TABLE userRoom (
 
 CREATE TABLE application (
 	id_application INT AUTO_INCREMENT,
+    user_id INT NOT NULL,
 	price double,
     amountOfSeats INT,
     classOfRoom VARCHAR(50) NOT NULL,
     statusOfRoom VARCHAR(50) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user (id_user),
 	PRIMARY KEY(id_application)
 );
 
@@ -60,14 +63,14 @@ TRUNCATE TABLE confirmationForAdmin;
 
 DROP TABLE user;
 DROP TABLE room;
-DROP TABLE userRoom;
+DROP TABLE userroom;
 DROP TABLE application;
-DROP TABLE confirmationForAdmin;
+DROP TABLE confirmationforadmin;
 
 INSERT INTO user(email, name, isAdmin, password) VALUES ("zinchenkoelizabeth@gmail.com", "Elizabeth", true, "password");
 
-INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom) VALUES (199, 2, "Luxury", "Empty");
-INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom) VALUES (99, 4, "Standard", "Empty");
-INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom) VALUES (89, 3, "Economy", "Empty");
-INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom) VALUES (99, 4, "Standard", "Empty");
-INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom) VALUES (89, 1, "Economy", "Empty");
+INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom, bill) VALUES (199, 2, "Luxury", "Empty", false);
+INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom, bill) VALUES (99, 4, "Standard", "Empty", false);
+INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom, bill) VALUES (89, 3, "Economy", "Empty", false);
+INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom, bill) VALUES (99, 4, "Standard", "Empty", false);
+INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom, bill) VALUES (89, 1, "Economy", "Empty", false);

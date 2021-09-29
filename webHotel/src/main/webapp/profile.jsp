@@ -19,6 +19,7 @@
                           <span class="stick"></span>
                           <a href="LocalizationServlet?language=ru" ><img class="flag" src="images/ddddddd.png"></a>
                         </nav>
+
     <style>
         body {
             background: #c7b39b url(images/Inkedb_LI.jpg) no-repeat;
@@ -103,6 +104,15 @@
                     </c:when>
                 </c:choose>
             </li>
+            <c:choose>
+                <c:when test="${bill == false}">
+                <form action="ProfileServlet" method="post">
+                <br>
+                <a><label><fmt:message key="Your_bill"/></label>:</a><br>
+                        <button class="btn admin" name="billPayment" value="true" type="submit"><label><fmt:message key="Pay_the_bill"/></label></button>
+                </form>
+                </c:when>
+            </c:choose>
             <c:choose>
                 <c:when test="${isAdmin ne 'false'}">
                     <br>

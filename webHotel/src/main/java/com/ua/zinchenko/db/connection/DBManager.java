@@ -1,4 +1,4 @@
-package com.ua.zinchenko.db.dao.connection;
+package com.ua.zinchenko.db.connection;
 
 import org.apache.log4j.Logger;
 

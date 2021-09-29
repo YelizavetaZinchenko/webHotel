@@ -11,6 +11,7 @@ public class Room {
     private double price;
     private String classOfRoom;
     private String statusOfRoom;
+    private boolean bill;
 
     public Room() {
     }
@@ -55,13 +56,24 @@ public class Room {
         this.statusOfRoom = statusOfRoom;
     }
 
+    public boolean isBill() {
+        return bill;
+    }
+
+    public void setBill(boolean bill) {
+        this.bill = bill;
+    }
+
     @Override
     public String toString() {
-        return "Room:" +
-                " id=" + id +
-                ", price=" + price +
+        return "Room{" +
+                "id=" + id +
                 ", amountOfSeats=" + amountOfSeats +
-                ", classOfRoom='" + classOfRoom;
+                ", price=" + price +
+                ", classOfRoom='" + classOfRoom + '\'' +
+                ", statusOfRoom='" + statusOfRoom + '\'' +
+                ", bill=" + bill +
+                '}';
     }
 }
 

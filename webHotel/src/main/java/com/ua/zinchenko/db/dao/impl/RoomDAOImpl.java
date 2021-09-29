@@ -1,7 +1,7 @@
 package com.ua.zinchenko.db.dao.impl;
 
 import com.ua.zinchenko.db.dao.RoomDAO;
-import com.ua.zinchenko.db.dao.connection.DBManager;
+import com.ua.zinchenko.db.connection.DBManager;
 import com.ua.zinchenko.db.dao.request.Requests;
 import com.ua.zinchenko.db.models.Room;
 import org.apache.log4j.Logger;
@@ -52,6 +52,28 @@ public class RoomDAOImpl implements RoomDAO {
         logger.info("Completed getSuggestedRoomByUserId");
         return room;
     }
+
+    @Override
+    public Room getBillStatusById(int userId) {
+        logger.info("Start getBillStatusById");
+        Room room = new Room();
+        try {
+            connection = DBManager.getConnection();
+            preparedStatement = connection.prepareStatement(Requests.SELECT_BILL_STATUS_BY_ID);
+            preparedStatement.setInt(1, userId);
+            rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                room.setBill(rs.getBoolean("bill"));
+            }
+        } catch (SQLException sqlException) {
+            Logger.getLogger(sqlException.getMessage());
+        } finally {
+            closing(connection, preparedStatement, rs);
+        }
+        logger.info("Completed getBillStatusById");
+        return room;
+    }
+
 
     /**
      * Gets rooms sorted by price option
@@ -174,6 +196,10 @@ public class RoomDAOImpl implements RoomDAO {
     /**
      * Gets  list of rooms sorted by amountOfSeats option
      */
+
+    public static void main(String[] args) {
+        System.out.println(new RoomDAOImpl().getRoomListBySeats());
+    }
 
     @Override
     public List<Room> getRoomListBySeats() {
@@ -327,6 +353,7 @@ public class RoomDAOImpl implements RoomDAO {
             room.setAmountOfSeats(resultSet.getInt("amountOfSeats"));
             room.setClassOfRoom(resultSet.getString("classOfRoom"));
             room.setStatusOfRoom(resultSet.getString("statusOfRoom"));
+            room.setBill(resultSet.getBoolean("bill"));
         } catch (SQLException sqlException) {
             Logger.getLogger(sqlException.getMessage());
         }

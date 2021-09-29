@@ -15,6 +15,8 @@ public interface UserRoomDAO {
 
     void insertUserRoom(int userId, int roomId);
 
+    void updateBillOfRoomsById(int roomId);
+
     void updateRoomOrderById(int room_id);
 
     void closing(Connection connection, PreparedStatement preparedStatement, ResultSet rs);

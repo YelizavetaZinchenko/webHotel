@@ -7,6 +7,7 @@ package com.ua.zinchenko.db.models;
 public class Application {
 
     private int id;
+    private int user_id;
     private double price;
     private int amountOfSeats;
     private String classOfRoom;
@@ -28,6 +29,14 @@ public class Application {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public double getPrice() {
@@ -66,6 +75,7 @@ public class Application {
     public String toString() {
         return "Application{" +
                 "id=" + id +
+                ", user_id=" + user_id +
                 ", price=" + price +
                 ", amountOfSeats=" + amountOfSeats +
                 ", classOfRoom='" + classOfRoom + '\'' +

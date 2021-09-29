@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -31,13 +32,16 @@ public class ApplicationServlet extends HttpServlet {
         Validation validation = (Validation) servletContext.getAttribute("validation");
         Application application = (Application) servletContext.getAttribute("application");
         ApplicationDAOImpl applicationDAO = (ApplicationDAOImpl) servletContext.getAttribute("applicationDAO");
+        HttpSession session = req.getSession();
 
         double price = Double.parseDouble(req.getParameter("price"));
         int amountOfSeats = Integer.parseInt(req.getParameter("amountOfSeats"));
         String classOfRoom = req.getParameter("classOfRoom");
         String statusOfRoom = req.getParameter("statusOfRoom");
+        int userId = Integer.parseInt(session.getAttribute("someID").toString());
 
         if (validation.validationForClassInApplication(classOfRoom) && validation.validationForStatusInApplication(statusOfRoom)) {
+            application.setUser_id(userId);
             application.setPrice(price);
             application.setAmountOfSeats(amountOfSeats);
             application.setClassOfRoom(classOfRoom);

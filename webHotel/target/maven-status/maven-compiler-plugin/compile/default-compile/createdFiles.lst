@@ -1,6 +1,6 @@
+com\ua\zinchenko\db\connection\DBManager.class
 com\ua\zinchenko\db\models\Application.class
 com\ua\zinchenko\validation\Validation.class
-com\ua\zinchenko\db\dao\connection\DBManager.class
 com\ua\zinchenko\db\dao\impl\ApplicationDAOImpl.class
 com\ua\zinchenko\controllers\LogOutServlet.class
 com\ua\zinchenko\filters\EncodingFilter.class

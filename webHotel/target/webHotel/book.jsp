@@ -93,17 +93,17 @@
                         <a href="#x" class="overlay" id="win5"></a>
                         <div class="popup">
 
-                            <fmt:message key="Price" var="Price"/>
+                            <fmt:message key="price" var="price"/>
                             <input class="input" type = "number" name = "price" placeholder="${price}">
 
-                            <fmt:message key="AmountOfSeats" var="AmountOfSeats"/>
-                            <input class="input" type = "number" name = "AmountOfSeats" placeholder="${AmountOfSeats}">
+                            <fmt:message key="amountOfSeats" var="amountOfSeats"/>
+                            <input class="input" type = "number" name = "amountOfSeats" placeholder="${amountOfSeats}">
 
-                             <fmt:message key="ClassOfRoom" var="ClassOfRoom"/>
-                            <input class="input" type = "text" name = "ClassOfRoom" placeholder="${ClassOfRoom}">
+                             <fmt:message key="classOfRoom" var="classOfRoom"/>
+                            <input class="input" type = "text" name = "classOfRoom" placeholder="${classOfRoom}">
 
-                            <fmt:message key="StatusOfRoom" var="StatusOfRoom"/>
-                            <input class="input" type = "text" name = "StatusOfRoom" placeholder="${StatusOfRoom}">
+                            <fmt:message key="statusOfRoom" var="statusOfRoom"/>
+                            <input class="input" type = "text" name = "statusOfRoom" placeholder="${statusOfRoom}">
                             <button a href="#win6" class="btny" type="submit"><label><fmt:message key="Make_an_application"/></label></button>
                         </div>
                         <a class="close" title="Закрыть" href="#close"></a>
@@ -115,11 +115,11 @@
         <form action="RoomServlet" method="post">
             <p class="sortedByText"><label><fmt:message key="Sort_by"/></label>
                 <select class="selectSort" name="Sort">
-                    <option class="sortText"><label></label></option>
-                    <option class="sortText"><label><fmt:message key="Price"/><label></option>
-                    <option class="sortText"><label><fmt:message key="AmountOfSeats"/></label></option>
-                    <option class="sortText"><label><fmt:message key="ClassOfRoom"/></label></option>
-                    <option class="sortText"><label><fmt:message key="StatusOfRoom"/></label></option>
+                    <option class="sortText"><label>-</label></option>
+                    <option class="sortText"><label><fmt:message key="price"/><label></option>
+                    <option class="sortText"><label><fmt:message key="amountOfSeats"/></label></option>
+                    <option class="sortText"><label><fmt:message key="classOfRoom"/></label></option>
+                    <option class="sortText"><label><fmt:message key="statusOfRoom"/></label></option>
                 </select>
             </p>
             <button class="confirmSort" type="submit"><label><fmt:message key="Find"/></label></button>

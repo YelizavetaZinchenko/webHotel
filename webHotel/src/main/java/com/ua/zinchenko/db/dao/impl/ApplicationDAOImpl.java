@@ -1,7 +1,7 @@
 package com.ua.zinchenko.db.dao.impl;
 
 import com.ua.zinchenko.db.dao.ApplicationDAO;
-import com.ua.zinchenko.db.dao.connection.DBManager;
+import com.ua.zinchenko.db.connection.DBManager;
 import com.ua.zinchenko.db.dao.request.Requests;
 import com.ua.zinchenko.db.models.Application;
 import org.apache.log4j.Logger;
@@ -33,10 +33,11 @@ public class ApplicationDAOImpl implements ApplicationDAO {
         try {
             connection = DBManager.getConnection();
             preparedStatement = connection.prepareStatement(Requests.INSERT_APPLICATION);
-            preparedStatement.setDouble(1, application.getPrice());
-            preparedStatement.setInt(2, application.getAmountOfSeats());
-            preparedStatement.setString(3, application.getClassOfRoom());
-            preparedStatement.setString(4, application.getStatusOfRoom());
+            preparedStatement.setInt(1, application.getUser_id());
+            preparedStatement.setDouble(2, application.getPrice());
+            preparedStatement.setInt(3, application.getAmountOfSeats());
+            preparedStatement.setString(4, application.getClassOfRoom());
+            preparedStatement.setString(5, application.getStatusOfRoom());
             preparedStatement.executeUpdate();
         } catch (SQLException sqlException) {
             Logger.getLogger(sqlException.getMessage());
@@ -91,6 +92,7 @@ public class ApplicationDAOImpl implements ApplicationDAO {
         Application application = new Application();
         try {
             application.setId(resultSet.getInt("id_application"));
+            application.setUser_id(resultSet.getInt("user_id"));
             application.setPrice(resultSet.getDouble("price"));
             application.setAmountOfSeats(resultSet.getInt("amountOfSeats"));
             application.setClassOfRoom(resultSet.getString("classOfRoom"));

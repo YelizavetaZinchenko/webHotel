@@ -1,7 +1,7 @@
 package com.ua.zinchenko.db.dao.impl;
 
 import com.ua.zinchenko.db.dao.ConfirmationForAdminDAO;
-import com.ua.zinchenko.db.dao.connection.DBManager;
+import com.ua.zinchenko.db.connection.DBManager;
 import com.ua.zinchenko.db.dao.request.Requests;
 import com.ua.zinchenko.db.models.ConfirmationForAdmin;
 import org.apache.log4j.Logger;

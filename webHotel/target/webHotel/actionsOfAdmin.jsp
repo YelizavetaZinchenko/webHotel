@@ -34,42 +34,42 @@
                 </style>
                 <ul class="menu">
                    <li>
-                                           <a href="index.jsp">
-                                               <label><fmt:message key="home"/></label>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a href="RoomServlet">
-                                               <label><fmt:message key="To_book"/></label>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a href="about.jsp">
-                                           <label><fmt:message key="About"/></label>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a href="contacts.jsp">
-                                           <label><fmt:message key="Contacts"/></label>
-                                           </a>
-                                       </li>
-                                   </ul>
-                                   <c:choose>
-                                       <c:when test="${someName ne null}">
-                                           <ul>
-                                               <a class="btn sign-up" href="LogOutServlet"><label><fmt:message key="Log_out"/></label></a>
-                                           </ul>
-                                           <ul>
-                                               <a class="btn log-in" href="ProfileServlet"><label><fmt:message key="Profile"/></label></a>
-                                       </c:when>
-                                       <c:otherwise>
-                                           </ul>
-                                           <ul>
-                                               <a class="btn sign-up" href="signin.jsp"><label><fmt:message key="sign_up"/></label></a>
-                                           </ul>
-                                           <ul>
-                                               <a class="btn log-in" href="login.jsp"><label><fmt:message key="log_in"/></label></a>
-                                           </ul>
+                        <a href="index.jsp">
+                            <label><fmt:message key="home"/></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="RoomServlet">
+                            <label><fmt:message key="To_book"/></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.jsp">
+                        <label><fmt:message key="About"/></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contacts.jsp">
+                        <label><fmt:message key="Contacts"/></label>
+                        </a>
+                    </li>
+                </ul>
+                <c:choose>
+                    <c:when test="${someName ne null}">
+                        <ul>
+                            <a class="btn sign-up" href="LogOutServlet"><label><fmt:message key="Log_out"/></label></a>
+                        </ul>
+                        <ul>
+                            <a class="btn log-in" href="ProfileServlet"><label><fmt:message key="Profile"/></label></a>
+                    </c:when>
+                    <c:otherwise>
+                        </ul>
+                        <ul>
+                            <a class="btn sign-up" href="signin.jsp"><label><fmt:message key="sign_up"/></label></a>
+                        </ul>
+                        <ul>
+                            <a class="btn log-in" href="login.jsp"><label><fmt:message key="log_in"/></label></a>
+                        </ul>
                     </c:otherwise>
                 </c:choose>
         </div>
@@ -102,9 +102,9 @@
             <tr>
                 <th><label><fmt:message key="Id"/></label></th>
                 <th><label><fmt:message key="Price"/></label></th>
-                <th><label><fmt:message key="Amount_of_seats"/></label></th>
-                <th><label><fmt:message key="Status_of_room"/></label></th>
-                <th><label><fmt:message key="Class_of_room"/></label></th>
+                <th><label><fmt:message key="AmountOfSeats"/></label></th>
+                <th><label><fmt:message key="StatusOfRoom"/></label></th>
+                <th><label><fmt:message key="ClassOfRoom"/></label></th>
             </tr>
             <c:forEach var="room" items="${roomList}">
                 <tr>
@@ -120,6 +120,7 @@
         <table id="applicationListTable">
             <tr>
                <th><label><fmt:message key="Id"/></label></th>
+               <th><label><fmt:message key="User_id"/></label></th>
                <th><label><fmt:message key="Price"/></label></th>
                <th><label><fmt:message key="AmountOfSeats"/></label></th>
                <th><label><fmt:message key="StatusOfRoom"/></label></th>
@@ -128,6 +129,7 @@
             <c:forEach var="application" items="${applicationList}">
                 <tr>
                     <td>${application.getId()}</td>
+                    <td>${application.getUser_id()}</td>
                     <td>${application.getPrice()}</td>
                     <td>${application.getAmountOfSeats()}</td>
                     <td>${application.getStatusOfRoom()}</td>

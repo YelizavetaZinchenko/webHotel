@@ -45,6 +45,8 @@ public class AdminServlet extends HttpServlet {
         List<Room> roomList = roomDAOImpl.getRoomList();
         List<Application> applicationList = applicationDAOImpl.getApplicationList();
 
+        System.out.println(applicationList.toString());
+
         req.setAttribute("roomList", roomList);
         req.setAttribute("userList", userList);
         req.setAttribute("applicationList", applicationList);

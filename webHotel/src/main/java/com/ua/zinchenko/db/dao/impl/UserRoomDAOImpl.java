@@ -1,7 +1,7 @@
 package com.ua.zinchenko.db.dao.impl;
 
 import com.ua.zinchenko.db.dao.UserRoomDAO;
-import com.ua.zinchenko.db.dao.connection.DBManager;
+import com.ua.zinchenko.db.connection.DBManager;
 import com.ua.zinchenko.db.dao.request.Requests;
 import com.ua.zinchenko.db.models.UserRoom;
 import org.apache.log4j.Logger;
@@ -25,7 +25,7 @@ public class UserRoomDAOImpl implements UserRoomDAO {
     private final Logger logger = Logger.getLogger(UserRoomDAOImpl.class);
 
     /**
-     * Gets options from
+     * Gets options from admin to send the offer to user
      */
 
     @Override
@@ -65,6 +65,28 @@ public class UserRoomDAOImpl implements UserRoomDAO {
         logger.info("Completed updateRoomOrderById");
     }
 
+    public static void main(String[] args) {
+        new UserRoomDAOImpl().updateBillOfRoomsById(1);
+    }
+
+    /**
+     * Updates bill from Room class by id
+     */
+
+    @Override
+    public void updateBillOfRoomsById(int roomId) {
+        try {
+            connection = DBManager.getConnection();
+            preparedStatement = connection.prepareStatement(Requests.UPDATE_ROOM_BILL_BY_ID);
+            preparedStatement.setInt(1, roomId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException sqlException) {
+            Logger.getLogger(sqlException.getMessage());
+        } finally {
+            closing(connection, preparedStatement, rs);
+        }
+    }
+
     /**
      * Closes connection, resultSet and preparedStatement
      */
@@ -83,7 +105,7 @@ public class UserRoomDAOImpl implements UserRoomDAO {
     }
 
     /**
-     * Gets user roon id by user id
+     * Gets user room id by user id
      */
 
     @Override
