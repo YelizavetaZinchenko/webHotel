@@ -78,7 +78,7 @@
 
     <section class="about" id="about">
         <div class="container">
-           <h1><label><fmt:message key="Sorry.Something went wrong. Please try again.Yours truly, TILL MIDNIGHT team"/></label></h1>
+           <h1>"Sorry.Something went wrong. Please try again.Yours truly, TILL MIDNIGHT team"</h1>
             </div>
             </section>
 </header>

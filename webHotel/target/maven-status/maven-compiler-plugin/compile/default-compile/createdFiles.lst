@@ -12,6 +12,7 @@ com\ua\zinchenko\controllers\RegistrationServlet.class
 com\ua\zinchenko\db\dao\request\Requests.class
 com\ua\zinchenko\db\dao\impl\UserDAOImpl.class
 com\ua\zinchenko\db\models\UserRoom.class
+com\ua\zinchenko\filters\AdminFilter.class
 com\ua\zinchenko\db\dao\ApplicationDAO.class
 com\ua\zinchenko\db\dao\impl\UserRoomDAOImpl.class
 com\ua\zinchenko\db\models\Room.class

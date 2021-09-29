@@ -89,6 +89,16 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   </servlet-mapping>
 
   <filter>
+    <filter-name>AdminFilter</filter-name>
+    <filter-class>com.ua.zinchenko.filters.AdminFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </filter-mapping>
+
+  <filter>
     <filter-name>EncodingFilter</filter-name>
     <filter-class>com.ua.zinchenko.filters.EncodingFilter</filter-class>
   </filter>
