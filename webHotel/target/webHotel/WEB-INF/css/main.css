@@ -49,6 +49,14 @@ ul, li {
     margin: 0;
 }
 
+.containerPagination{
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
 .container {
     width: 1170px;
     /*позиционирование по центру*/
@@ -756,7 +764,7 @@ margin-left: 150px;
 
 #changeUserContainer{
     width:50%;
-    height: 30%;
+    height: 35%;
     background-color: #F5DCCA;
     border-radius: 2%;
     margin-left: 25%;
@@ -851,4 +859,31 @@ th:first-child, td:first-child {
     border: 2px solid #444343;
     padding-left: 8px;
     outline: none;
+}
+
+.pagination {
+    margin-top: 15px;
+    text-align:center;
+    margin-left:27%;
+    position:absolute;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
 }

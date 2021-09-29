@@ -11,7 +11,14 @@
        <link rel="stylesheet" href="css.main.css">
 </head>
 <body>
-<header id="header" class="header">
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="res"/>
+<header class="header" id="header">
+              <nav id="languageHeader">
+                          <a href="LocalizationServlet?language=en"><img class="flag" src="images/aaaaaa.png"></a>
+                          <span class="stick"></span>
+                          <a href="LocalizationServlet?language=ru" ><img class="flag" src="images/ddddddd.png"></a>
+                        </nav>
     <div class="container">
         <div class="nav">
             <a href="TILL MIDNIGHT">
@@ -26,53 +33,53 @@
                     }
                 </style>
                 <ul class="menu">
-                    <li>
-                        <a href="index.jsp">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="RoomServlet">
-                            To book
-                        </a>
-                    </li>
-                    <li>
-                        <a href="about.jsp">
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a href="contacts.jsp">
-                            Contacts
-                        </a>
-                    </li>
-                </ul>
-                <c:choose>
-                    <c:when test="${someName ne null}">
-                        <ul>
-                            <a href="LogOutServlet" class="btn sign-up">Log Out</a>
-                        </ul>
-                        <ul>
-                            <a href="ProfileServlet" class="btn log-in">Profile</a>
-                    </c:when>
-                    <c:otherwise>
-                        </ul>
-                        <ul>
-                            <a href="signin.jsp" class="btn sign-up">sign up</a>
-                        </ul>
-                        <ul>
-                            <a href="login.jsp" class="btn log-in">log in</a>
-                        </ul>
+                  <li>
+                                          <a href="index.jsp">
+                                              <label><fmt:message key="home"/></label>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="RoomServlet">
+                                              <label><fmt:message key="To_book"/></label>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="about.jsp">
+                                          <label><fmt:message key="About"/></label>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="contacts.jsp">
+                                          <label><fmt:message key="Contacts"/></label>
+                                          </a>
+                                      </li>
+                                  </ul>
+                                  <c:choose>
+                                      <c:when test="${someName ne null}">
+                                          <ul>
+                                              <a class="btn sign-up" href="LogOutServlet"><label><fmt:message key="Log_out"/></label></a>
+                                          </ul>
+                                          <ul>
+                                              <a class="btn log-in" href="ProfileServlet"><label><fmt:message key="Profile"/></label></a>
+                                      </c:when>
+                                      <c:otherwise>
+                                          </ul>
+                                          <ul>
+                                              <a class="btn sign-up" href="signin.jsp"><label><fmt:message key="sign_up"/></label></a>
+                                          </ul>
+                                          <ul>
+                                              <a class="btn log-in" href="login.jsp"><label><fmt:message key="log_in"/></label></a>
+                                          </ul>
                     </c:otherwise>
                 </c:choose>
         </div>
     </div>
     <section id="about" class="about">
         <div class="container">
-            <h2>About the hotel</h2>
+            <h2><label><fmt:message key="About_the_hotel"/></label></h2>
             <div class="description">
                 <div class="desc-left">
-                    <h3>Architecture & Atmosphere</h3>
+                    <h3><label><fmt:message key="Architecture"/></label>&<label><fmt:message key="Atmosphere"/></label></h3>
                     <p>
                         Hotel "Salyut" was built by architect Abraham Miletsky in 1984. Thanks to an unusual
                         architectural solution, the hotel building has become one of the most unusual buildings of the
@@ -82,8 +89,7 @@
                     </p>
                 </div>
                 <div class="desc-right">
-                    <h3>
-                        Our advantages</h3>
+                    <h3><label><fmt:message key="Our_advantages"/></label></h3>
                     <p>
                         The hotel will provide all services necessary for leisure and business: Room Service, high-speed
                         WiFi, business center, transport service, parking, luggage storage, laundry, dry cleaning and

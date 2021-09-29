@@ -3,7 +3,7 @@ package com.ua.zinchenko.db.dao.impl;
 import com.ua.zinchenko.db.dao.ApplicationDAO;
 import com.ua.zinchenko.db.dao.connection.DBManager;
 import com.ua.zinchenko.db.dao.request.Requests;
-import com.ua.zinchenko.db.entity.Application;
+import com.ua.zinchenko.db.models.Application;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -13,14 +13,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Zinchenko Yelizaveta on 30.09.2021.
+ */
+
 public class ApplicationDAOImpl implements ApplicationDAO {
 
     private static Connection connection = null;
     private static PreparedStatement preparedStatement = null;
     private static ResultSet rs = null;
+    private final Logger logger = Logger.getLogger(ApplicationDAOImpl.class);
 
+    /**
+     * Gets the options in the Application table that based in MySQL
+     */
     @Override
     public void insertApplication(Application application) {
+        logger.info("Start insertApplication");
         try {
             connection = DBManager.getConnection();
             preparedStatement = connection.prepareStatement(Requests.INSERT_APPLICATION);
@@ -34,10 +43,15 @@ public class ApplicationDAOImpl implements ApplicationDAO {
         } finally {
             closing(connection, preparedStatement, rs);
         }
+        logger.info("Сompleted insertApplication");
     }
 
+    /**
+     * Gets the Application list
+     */
     @Override
     public List<Application> getApplicationList() {
+        logger.info("Start getApplicationList");
         List<Application> applicationList = new ArrayList<>();
         try {
             connection = DBManager.getConnection();
@@ -51,8 +65,13 @@ public class ApplicationDAOImpl implements ApplicationDAO {
         } finally {
             closing(connection, preparedStatement, rs);
         }
+        logger.info("Completed getApplicationList");
         return applicationList;
     }
+
+    /**
+     * Closes connection, resultSet and preparedStatement
+     */
 
     @Override
     public void closing(Connection connection, PreparedStatement preparedStatement, ResultSet rs) {

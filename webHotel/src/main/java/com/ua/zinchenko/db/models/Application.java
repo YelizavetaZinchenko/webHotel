@@ -1,14 +1,25 @@
-package com.ua.zinchenko.db.entity;
+package com.ua.zinchenko.db.models;
 
-public class Room {
+/**
+ * Created by Zinchenko Yelizaveta on 30.09.2021.
+ */
+
+public class Application {
 
     private int id;
-    private int amountOfSeats;
     private double price;
+    private int amountOfSeats;
     private String classOfRoom;
     private String statusOfRoom;
 
-    public Room() {
+    public Application() {
+    }
+
+    public Application(double price, int amountOfSeats, String classOfRoom, String statusOfRoom) {
+        this.price = price;
+        this.amountOfSeats = amountOfSeats;
+        this.classOfRoom = classOfRoom;
+        this.statusOfRoom = statusOfRoom;
     }
 
     public int getId() {
@@ -53,7 +64,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" +
+        return "Application{" +
                 "id=" + id +
                 ", price=" + price +
                 ", amountOfSeats=" + amountOfSeats +
@@ -62,5 +73,3 @@ public class Room {
                 '}';
     }
 }
-
-

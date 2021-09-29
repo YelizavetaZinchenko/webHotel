@@ -3,7 +3,7 @@ package com.ua.zinchenko.db.dao.impl;
 import com.ua.zinchenko.db.dao.UserDAO;
 import com.ua.zinchenko.db.dao.connection.DBManager;
 import com.ua.zinchenko.db.dao.request.Requests;
-import com.ua.zinchenko.db.entity.User;
+import com.ua.zinchenko.db.models.User;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -13,15 +13,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Zinchenko Yelizaveta on 30.09.2021.
+ */
+
 public class UserDAOImpl implements UserDAO {
 
     private static Connection connection = null;
     private static PreparedStatement preparedStatement = null;
     private static ResultSet rs = null;
+    private final Logger logger = Logger.getLogger(UserDAOImpl.class);
 
+    /**
+     * Gets options in the user table that based in MySQL
+     */
 
     @Override
     public void insertUser(User user) {
+        logger.info("Start insertUser");
         try {
             connection = DBManager.getConnection();
             preparedStatement = connection.prepareStatement(Requests.INSERT_USER);
@@ -35,10 +44,16 @@ public class UserDAOImpl implements UserDAO {
         } finally {
             closing(connection, preparedStatement, rs);
         }
+        logger.info("Completed insertUser");
     }
+
+    /**
+     * Gets list of users
+     */
 
     @Override
     public List<User> getUserList() {
+        logger.info("Start getUserList");
         List<User> userList = new ArrayList<>();
         try {
             connection = DBManager.getConnection();
@@ -52,6 +67,7 @@ public class UserDAOImpl implements UserDAO {
         } finally {
             closing(connection, preparedStatement, rs);
         }
+        logger.info("Completed getUserList");
         return userList;
     }
 
@@ -70,8 +86,13 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
+    /**
+     * Gets user's id sorted by email
+     */
+
     @Override
     public int getUserIdByEmail(String email) {
+        logger.info("Start getUserIdByEmail");
         int id = 0;
         try {
             connection = DBManager.getConnection();
@@ -86,11 +107,17 @@ public class UserDAOImpl implements UserDAO {
         } finally {
             closing(connection, preparedStatement, rs);
         }
+        logger.info("Completed getUserIdByEmail");
         return id;
     }
 
+    /**
+     * Gets user's email sorted by  user's id
+     */
+
     @Override
     public String getEmailById(int id) {
+        logger.info("Start getEmailById");
         String email = null;
         try {
             connection = DBManager.getConnection();
@@ -105,12 +132,17 @@ public class UserDAOImpl implements UserDAO {
         } finally {
             closing(connection, preparedStatement, rs);
         }
+        logger.info("Completed getEmailById");
         return email;
     }
 
+    /**
+     * Gets user's name sorted by user's email
+     */
 
     @Override
     public String getNameByEmail(String email) {
+        logger.info("Start getNameByEmail");
         String name = null;
         try {
             connection = DBManager.getConnection();
@@ -125,11 +157,46 @@ public class UserDAOImpl implements UserDAO {
         } finally {
             closing(connection, preparedStatement, rs);
         }
+        logger.info("Completed getNameByEmail");
         return name;
     }
 
+    /**
+     * Gets everything from user by user's id
+     */
+
+    @Override
+    public User getUserById(int id) {
+        logger.info("Start getUserById");
+        User user = new User();
+        try {
+            connection = DBManager.getConnection();
+            preparedStatement = connection.prepareStatement(Requests.GET_USER_BY_ID);
+            preparedStatement.setInt(1, id);
+            rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                user.setId(rs.getInt("id_user"));
+                user.setEmail(rs.getString("email"));
+                user.setName(rs.getString("name"));
+                user.setAdmin(rs.getBoolean("admin"));
+                user.setPassword(rs.getString("password"));
+            }
+        } catch (SQLException sqlException) {
+            Logger.getLogger(sqlException.getMessage());
+        } finally {
+            closing(connection, preparedStatement, rs);
+        }
+        logger.info("Completed getUserById");
+        return user;
+    }
+
+    /**
+     * Gets isAdmin option sorted by user's id
+     */
+
     @Override
     public boolean getIsAdminById(int id) {
+        logger.info("Start getIsAdminById");
         boolean isAdmin = false;
         try {
             connection = DBManager.getConnection();
@@ -144,9 +211,13 @@ public class UserDAOImpl implements UserDAO {
         } finally {
             closing(connection, preparedStatement, rs);
         }
+        logger.info("Completed getIsAdminById");
         return isAdmin;
     }
 
+    /**
+     * Checks entered email and password of a person to find out that there is user with the same options
+     */
     @Override
     public boolean exists(String email, String pass) {
         boolean status = false;
@@ -163,6 +234,9 @@ public class UserDAOImpl implements UserDAO {
         return status;
     }
 
+    /**
+     * Closes connection, resultSet and preparedStatement
+     */
     @Override
     public void closing(Connection connection, PreparedStatement preparedStatement, ResultSet rs) {
         try {

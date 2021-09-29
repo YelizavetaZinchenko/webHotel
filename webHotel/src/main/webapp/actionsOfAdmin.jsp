@@ -11,7 +11,14 @@
     <link rel="stylesheet" href="css.main.css">
 </head>
 <body>
-<header id="header" class="header">
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="res"/>
+<header class="header" id="header">
+             <nav id="languageHeader">
+                         <a href="LocalizationServlet?language=en"><img class="flag" src="images/aaaaaa.png"></a>
+                         <span class="stick"></span>
+                         <a href="LocalizationServlet?language=ru" ><img class="flag" src="images/ddddddd.png"></a>
+                       </nav>
     <div class="container">
         <div class="nav">
             <a href="TILL MIDNIGHT">
@@ -26,60 +33,60 @@
                     }
                 </style>
                 <ul class="menu">
-                    <li>
-                        <a href="index.jsp">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="RoomServlet">
-                            To book
-                        </a>
-                    </li>
-                    <li>
-                        <a href="about.jsp">
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a href="contacts.jsp">
-                            Contacts
-                        </a>
-                    </li>
-                </ul>
-                <c:choose>
-                    <c:when test="${someName ne null}">
-                        <ul>
-                            <a href="LogOutServlet" class="btn sign-up">Log Out</a>
-                        </ul>
-                        <ul>
-                            <a href="ProfileServlet" class="btn log-in">Profile</a>
-                    </c:when>
-                    <c:otherwise>
-                        </ul>
-                        <ul>
-                            <a href="signin.jsp" class="btn sign-up">sign up</a>
-                        </ul>
-                        <ul>
-                            <a href="login.jsp" class="btn log-in">log in</a>
-                        </ul>
+                   <li>
+                                           <a href="index.jsp">
+                                               <label><fmt:message key="home"/></label>
+                                           </a>
+                                       </li>
+                                       <li>
+                                           <a href="RoomServlet">
+                                               <label><fmt:message key="To_book"/></label>
+                                           </a>
+                                       </li>
+                                       <li>
+                                           <a href="about.jsp">
+                                           <label><fmt:message key="About"/></label>
+                                           </a>
+                                       </li>
+                                       <li>
+                                           <a href="contacts.jsp">
+                                           <label><fmt:message key="Contacts"/></label>
+                                           </a>
+                                       </li>
+                                   </ul>
+                                   <c:choose>
+                                       <c:when test="${someName ne null}">
+                                           <ul>
+                                               <a class="btn sign-up" href="LogOutServlet"><label><fmt:message key="Log_out"/></label></a>
+                                           </ul>
+                                           <ul>
+                                               <a class="btn log-in" href="ProfileServlet"><label><fmt:message key="Profile"/></label></a>
+                                       </c:when>
+                                       <c:otherwise>
+                                           </ul>
+                                           <ul>
+                                               <a class="btn sign-up" href="signin.jsp"><label><fmt:message key="sign_up"/></label></a>
+                                           </ul>
+                                           <ul>
+                                               <a class="btn log-in" href="login.jsp"><label><fmt:message key="log_in"/></label></a>
+                                           </ul>
                     </c:otherwise>
                 </c:choose>
         </div>
     </div>
     <div class="adminActions">
-        <button id="userListButton" class="listOfUsersButton" type="submit">User List</button>
-        <button id="roomListButton" class="listOfRoomButton" type="submit">Room List</button>
-        <button id="applicationListButton" class="listOfApplicationButton" type="submit">Application List</button>
-        <button id="ConfirmationListButton" class="listOfConfirmationButton" type="submit">Confirmation of admin
+        <button id="userListButton" class="listOfUsersButton" type="submit"><label><fmt:message key="User_List"/></label></button>
+        <button id="roomListButton" class="listOfRoomButton" type="submit"><label><fmt:message key="Room_List"/></label</button>
+        <button id="applicationListButton" class="listOfApplicationButton" type="submit"><label><fmt:message key="Application_List"/></label></button>
+        <button id="ConfirmationListButton" class="listOfConfirmationButton" type="submit"><label><fmt:message key="Confirmation_of_admin"/></label></button>
         </button>
 
         <table id="tableOfUsers">
             <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Name</th>
-                <th>Admin</th>
+                <th><label><fmt:message key="Id"/></label></th>
+                <th><label><fmt:message key="Email"/></label></th>
+                <th><label><fmt:message key="Name"/></label></th>
+                <th><label><fmt:message key="Admin"/></label></th>
             </tr>
             <c:forEach var="user" items="${userList}">
                 <tr>
@@ -93,11 +100,11 @@
 
         <table id="roomListTable">
             <tr>
-                <th>Id</th>
-                <th>Price</th>
-                <th>Amount of the seats</th>
-                <th>Status of the room</th>
-                <th>Class of the room</th>
+                <th><label><fmt:message key="Id"/></label></th>
+                <th><label><fmt:message key="Price"/></label></th>
+                <th><label><fmt:message key="Amount_of_seats"/></label></th>
+                <th><label><fmt:message key="Status_of_room"/></label></th>
+                <th><label><fmt:message key="Class_of_room"/></label></th>
             </tr>
             <c:forEach var="room" items="${roomList}">
                 <tr>
@@ -112,11 +119,11 @@
 
         <table id="applicationListTable">
             <tr>
-                <th>Id</th>
-                <th>Price</th>
-                <th>Amount of the seats</th>
-                <th>Status of the room</th>
-                <th>Class of the room</th>
+               <th><label><fmt:message key="Id"/></label></th>
+               <th><label><fmt:message key="Price"/></label></th>
+               <th><label><fmt:message key="AmountOfSeats"/></label></th>
+               <th><label><fmt:message key="StatusOfRoom"/></label></th>
+               <th><label><fmt:message key="ClassOfRoom"/></label></th>
             </tr>
             <c:forEach var="application" items="${applicationList}">
                 <tr>
@@ -132,10 +139,10 @@
         <div id="changeUserContainer">
             <form action="ConfirmationOfAdminServlet" method="post">
                 <div class="dws-input">
-                    <input type="text" name="user_admin_id">
-                    <input type="text" name="room_admin_id">
+                    <input type="number" name="user_admin_id" <label><fmt:message key="User_id"/></label>
+                    <input type="number" name="room_admin_id" <label><fmt:message key="Room_id"/></label>
                 </div>
-                <button class="btn confirmation" type="submit"><label>confirm</label></button>
+                <button class="btn confirmation" type="submit"><label><fmt:message key="confirm"/></label></button>
             </form>
         </div>
 

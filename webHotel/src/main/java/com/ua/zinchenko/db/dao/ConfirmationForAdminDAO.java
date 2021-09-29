@@ -1,12 +1,18 @@
 package com.ua.zinchenko.db.dao;
 
-import com.ua.zinchenko.db.entity.ConfirmationForAdmin;
+import com.ua.zinchenko.db.models.ConfirmationForAdmin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * Created by Zinchenko Yelizaveta on 30.09.2021.
+ */
+
 public interface ConfirmationForAdminDAO {
+
+    void deleteFieldFromTableByUserId(int userId);
 
     void insertConfirmationForAdmin(ConfirmationForAdmin confirmationForAdmin);
 

@@ -1,11 +1,15 @@
 package com.ua.zinchenko.db.dao;
 
-import com.ua.zinchenko.db.entity.Application;
+import com.ua.zinchenko.db.models.Application;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
+
+/**
+ * Created by Zinchenko Yelizaveta on 30.09.2021.
+ */
 
 public interface ApplicationDAO {
 

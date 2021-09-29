@@ -1,4 +1,8 @@
-package com.ua.zinchenko.db.entity;
+package com.ua.zinchenko.db.models;
+
+/**
+ * Created by Zinchenko Yelizaveta on 30.09.2021.
+ */
 
 public class User {
 

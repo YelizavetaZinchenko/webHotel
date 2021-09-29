@@ -6,6 +6,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
+/**
+ * Created by Zinchenko Yelizaveta on 30.09.2021.
+ */
+
 public class DBManager {
 
     private static Connection conn = null;

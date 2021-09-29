@@ -49,6 +49,14 @@ ul, li {
     margin: 0;
 }
 
+.containerPagination{
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
 .container {
     width: 1170px;
     /*позиционирование по центру*/
@@ -437,16 +445,16 @@ height:20px;
     left: 0;
     z-index: 10;
     display: none;
-/* фон затемнения */
+
     background-color: rgba(0, 0, 0, 0.65);
-    position: fixed; /* фиксированное поцизионирование */
-    cursor: default; /* тип курсара */
+    position: fixed;
+    cursor: default;
 }
-/* активируем слой затемнения */
+
 .overlay:target {
     display: block;
 }
-/* стили модального окна */
+
 .popup {
     top: -100%;
     right: 0;
@@ -457,18 +465,18 @@ height:20px;
     width: 85%;
     min-width: 320px;
     max-width: 600px;
-/* фиксированное позиционирование, окно стабильно при прокрутке */
+
     position: fixed;
     padding: 15px;
     border: 1px solid #383838;
     background: #fefefe;
-/* скругление углов */
+
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     border-radius: 4px;
     font: 14px/18px 'Tahoma', Arial, sans-serif;
-/* внешняя тень */
+
     -webkit-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
     -moz-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
     -ms-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
@@ -482,7 +490,7 @@ height:20px;
     -o-transition: -o-transform 0.6s ease-out;
     transition: transform 0.6s ease-out;
 }
-/* активируем модальный блок */
+
 .overlay:target+.popup {
     -webkit-transform: translate(-50%, 0);
     -ms-transform: translate(-50%, 0);
@@ -490,7 +498,7 @@ height:20px;
     transform: translate(-50%, 0);
     top: 20%;
 }
-/* формируем кнопку закрытия */
+
 .close {
     top: -10px;
     right: -10px;
@@ -532,12 +540,12 @@ height:20px;
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
 }
-/* изображения внутри окна */
+
 .popup img {
     width: 100%;
     height: auto;
 }
-/* миниатюры слева/справа */
+
 .pic-left,
 .pic-right {
     width: 25%;
@@ -551,7 +559,7 @@ height:20px;
     float: right;
     margin: 5px 0 5px 15px;
 }
-/* элементы м-медиа, фреймы */
+
 .popup embed,
 .popup iframe {
     top: 0;
@@ -564,7 +572,7 @@ height:20px;
     max-width: 600px;
     width: 100%;
 }
-.popup h2 { /* заголовок 2 */
+.popup h2 {
     margin: 0;
     color: #008000;
     padding: 5px 0px 10px;
@@ -575,7 +583,7 @@ height:20px;
     font-family: 'Tahoma', Arial, sans-serif;
     line-height: 1.3;
 }
-/* параграфы */
+
 .popup p {margin: 0; padding: 5px 0}
 
 .popup .btny{
@@ -756,7 +764,7 @@ margin-left: 150px;
 
 #changeUserContainer{
     width:50%;
-    height: 30%;
+    height: 35%;
     background-color: #F5DCCA;
     border-radius: 2%;
     margin-left: 25%;
@@ -851,4 +859,31 @@ th:first-child, td:first-child {
     border: 2px solid #444343;
     padding-left: 8px;
     outline: none;
+}
+
+.pagination {
+    margin-top: 15px;
+    text-align:center;
+    margin-left:27%;
+    position:absolute;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
 }

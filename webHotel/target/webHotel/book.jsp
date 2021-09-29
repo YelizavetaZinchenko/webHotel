@@ -11,7 +11,14 @@
     <link rel="stylesheet" href="css.main.css">
 </head>
 <body>
-<header id="header" class="header">
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="res"/>
+<header class="header" id="header">
+             <nav id="languageHeader">
+                         <a href="LocalizationServlet?language=en"><img class="flag" src="images/aaaaaa.png"></a>
+                         <span class="stick"></span>
+                         <a href="LocalizationServlet?language=ru" ><img class="flag" src="images/ddddddd.png"></a>
+                       </nav>
     <style>
         body {
             background: #c7b39b url(images/Inkedb_LI.jpg) no-repeat;
@@ -27,43 +34,43 @@
         <div class="nav">
             <a href="TILL MIDNIGHT">
                 <ul class="menu">
-                    <li>
-                        <a href="index.jsp">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="RoomServlet">
-                            To book
-                        </a>
-                    </li>
-                    <li>
-                        <a href="about.jsp">
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a href="contacts.jsp">
-                            Contacts
-                        </a>
-                    </li>
-                </ul>
-                <c:choose>
-                    <c:when test="${someName ne null}">
-                        <ul>
-                            <a href="LogOutServlet" class="btn sign-up">Log Out</a>
-                        </ul>
-                        <ul>
-                            <a href="ProfileServlet" class="btn log-in">Profile</a>
-                    </c:when>
-                    <c:otherwise>
-                        </ul>
-                        <ul>
-                            <a href="signin.jsp" class="btn sign-up">sign up</a>
-                        </ul>
-                        <ul>
-                            <a href="login.jsp" class="btn log-in">log in</a>
-                        </ul>
+                  <li>
+                                          <a href="index.jsp">
+                                              <label><fmt:message key="home"/></label>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="RoomServlet">
+                                              <label><fmt:message key="To_book"/></label>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="about.jsp">
+                                          <label><fmt:message key="About"/></label>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="contacts.jsp">
+                                          <label><fmt:message key="Contacts"/></label>
+                                          </a>
+                                      </li>
+                                  </ul>
+                                  <c:choose>
+                                      <c:when test="${someName ne null}">
+                                          <ul>
+                                              <a class="btn sign-up" href="LogOutServlet"><label><fmt:message key="Log_out"/></label></a>
+                                          </ul>
+                                          <ul>
+                                              <a class="btn log-in" href="ProfileServlet"><label><fmt:message key="Profile"/></label></a>
+                                      </c:when>
+                                      <c:otherwise>
+                                          </ul>
+                                          <ul>
+                                              <a class="btn sign-up" href="signin.jsp"><label><fmt:message key="sign_up"/></label></a>
+                                          </ul>
+                                          <ul>
+                                              <a class="btn log-in" href="login.jsp"><label><fmt:message key="log_in"/></label></a>
+                                          </ul>
                     </c:otherwise>
                 </c:choose>
         </div>
@@ -73,25 +80,31 @@
 
                     <c:choose>
                         <c:when test="${someID ne null}">
-                            <a href="#win5" type="submit" class="btn">Make an application</a>
+                            <a href="#win5" type="submit" class="btn"><label><fmt:message key="Make_an_application"/></label></a>
                             <br/>
                         </c:when>
                         <c:otherwise>
-                            <h>You can not make an application. Please log in.</h>
+                            <h><label><fmt:message key="You_can_not_make_an_application"/></label></h>
                             <br/>
                         </c:otherwise>
                     </c:choose>
 
-
-                    <!-- Модальное окно №5 -->
                     <form action="ApplicationServlet" method="post">
                         <a href="#x" class="overlay" id="win5"></a>
                         <div class="popup">
-                            <input class="input" type="number" name="price" placeholder="Price">
-                            <input class="input" type="number" name="amountOfSeats" placeholder="Amount of the seats">
-                            <input class="input" type="text" name="classOfRoom" placeholder="Class of the room">
-                            <input class="input" type="text" name="statusOfRoom" placeholder="Status of the room">
-                            <button a href="#win6" class="btny" type="submit">Make an application</button>
+
+                            <fmt:message key="Price" var="Price"/>
+                            <input class="input" type = "number" name = "price" placeholder="${price}">
+
+                            <fmt:message key="AmountOfSeats" var="AmountOfSeats"/>
+                            <input class="input" type = "number" name = "AmountOfSeats" placeholder="${AmountOfSeats}">
+
+                             <fmt:message key="ClassOfRoom" var="ClassOfRoom"/>
+                            <input class="input" type = "text" name = "ClassOfRoom" placeholder="${ClassOfRoom}">
+
+                            <fmt:message key="StatusOfRoom" var="StatusOfRoom"/>
+                            <input class="input" type = "text" name = "StatusOfRoom" placeholder="${StatusOfRoom}">
+                            <button a href="#win6" class="btny" type="submit"><label><fmt:message key="Make_an_application"/></label></button>
                         </div>
                         <a class="close" title="Закрыть" href="#close"></a>
                     </form>
@@ -99,30 +112,29 @@
                 </div>
             </div>
         </div>
-
         <form action="RoomServlet" method="post">
-            <p class="sortedByText"><label>Sort by:</label>
+            <p class="sortedByText"><label><fmt:message key="Sort_by"/></label>
                 <select class="selectSort" name="Sort">
-                    <option class="sortText"><label>-</label></option>
-                    <option class="sortText"><label>Price<label></option>
-                    <option class="sortText"><label>Amount Of Seats</label></option>
-                    <option class="sortText"><label>Class Of Room</label></option>
-                    <option class="sortText"><label>Status Of Room</label></option>
+                    <option class="sortText"><label></label></option>
+                    <option class="sortText"><label><fmt:message key="Price"/><label></option>
+                    <option class="sortText"><label><fmt:message key="AmountOfSeats"/></label></option>
+                    <option class="sortText"><label><fmt:message key="ClassOfRoom"/></label></option>
+                    <option class="sortText"><label><fmt:message key="StatusOfRoom"/></label></option>
                 </select>
             </p>
-            <button class="confirmSort" type="submit">Find</button>
+            <button class="confirmSort" type="submit"><label><fmt:message key="Find"/></label></button>
         </form>
 
         <section class="rooms sec-width" id="rooms">
             <div class="title">
-                <h2>rooms</h2>
+                <h2><label><fmt:message key="rooms"/></label></h2>
                 <div class="rooms-container">
                     <!-- single room -->
 
 
                     <c:choose>
                         <c:when test="${roomList.size() ne 0}">
-                            <c:forEach var="i" begin="0" end="${roomList.size() - 1}">
+                            <c:forEach var = "i" begin="0" end="${Amount - 1}">
                                 <c:choose>
                                     <c:when test="${roomList.get(i).getStatusOfRoom() ne 'booked'}">
                                         <article class="room">
@@ -136,14 +148,10 @@
                                                         <i class="fas fa-arrow-alt-circle-right"></i>
                                                         Amount Of Seats: ${roomList.get(i).getAmountOfSeats()}
                                                     </li>
-
-
                                                     <li>
                                                         <i class="fas fa-arrow-alt-circle-right"></i>
                                                         Status Of Room: ${roomList.get(i).getStatusOfRoom()}
                                                     </li>
-
-
                                                     <li>
                                                         <i class="fas fa-arrow-alt-circle-right"></i>
                                                         Feeling of relaxation and comfort.
@@ -175,8 +183,8 @@
                             </c:forEach>
                         </c:when>
                         <c:otherwise>
-                            <div class="itemsNotFound">
-                                <h0>Items not found :(</h0>
+                            <div class="Ididnotfindanything">
+                                <h0>Sorry. All the rooms are taken.</h0>
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -187,6 +195,15 @@
     </div>
 </header>
 <footer id="footer" class="footer">
+    <div class="containerPagination">
+            <c:if test="${pageList.size() ne 0}">
+                 <div class="pagination">
+                     <c:forEach var="pages" items="${pageList}">
+                         <a href="RoomServlet?Amount=${Amount}&page=${pages}">${pages}</a>
+                     </c:forEach>
+                 </div>
+            </c:if>
+    </div>
     <div class="container">
         <div class="footer-text">
             <p>

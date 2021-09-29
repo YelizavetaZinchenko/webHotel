@@ -1,11 +1,15 @@
 package com.ua.zinchenko.db.dao;
 
-import com.ua.zinchenko.db.entity.User;
+import com.ua.zinchenko.db.models.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
+
+/**
+ * Created by Zinchenko Yelizaveta on 30.09.2021.
+ */
 
 public interface UserDAO {
 
@@ -20,6 +24,8 @@ public interface UserDAO {
     String getEmailById(int id);
 
     String getNameByEmail(String email);
+
+    User getUserById(int id);
 
     boolean getIsAdminById(int id);
 

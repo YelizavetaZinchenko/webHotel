@@ -1,13 +1,20 @@
 package com.ua.zinchenko.db.dao;
 
-import com.ua.zinchenko.db.entity.Room;
+import com.ua.zinchenko.db.models.Room;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
+/**
+ * Created by Zinchenko Yelizaveta on 30.09.2021.
+ */
+
 public interface RoomDAO {
+
+
+    Room getSuggestedRoomByUserId(int userId);
 
     List<Room> getRoomByUserId(int userId);
 
@@ -28,6 +35,8 @@ public interface RoomDAO {
     List<Room> getRoomListByStatus();
 
     List<Room> getRoomListByClass();
+
+    List<Integer> setPageList(List<Room> roomList, String amount);
 
     Room myResultSet(ResultSet resultSet);
 

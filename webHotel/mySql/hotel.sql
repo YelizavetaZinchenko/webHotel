@@ -61,11 +61,13 @@ TRUNCATE TABLE confirmationForAdmin;
 DROP TABLE user;
 DROP TABLE room;
 DROP TABLE userRoom;
-DROP TABLE  application;
-DROP TABLE  confirmationForAdmin;
+DROP TABLE application;
+DROP TABLE confirmationForAdmin;
 
 INSERT INTO user(email, name, isAdmin, password) VALUES ("zinchenkoelizabeth@gmail.com", "Elizabeth", true, "password");
 
 INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom) VALUES (199, 2, "Luxury", "Empty");
 INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom) VALUES (99, 4, "Standard", "Empty");
 INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom) VALUES (89, 3, "Economy", "Empty");
+INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom) VALUES (99, 4, "Standard", "Empty");
+INSERT INTO room(price, amountOfSeats, classOfRoom, statusOfRoom) VALUES (89, 1, "Economy", "Empty");

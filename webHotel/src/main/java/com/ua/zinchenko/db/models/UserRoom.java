@@ -1,4 +1,8 @@
-package com.ua.zinchenko.db.entity;
+package com.ua.zinchenko.db.models;
+
+/**
+ * Created by Zinchenko Yelizaveta on 30.09.2021.
+ */
 
 public class UserRoom {
 
@@ -13,7 +17,6 @@ public class UserRoom {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public int getUser_id() {
         return user_id;
