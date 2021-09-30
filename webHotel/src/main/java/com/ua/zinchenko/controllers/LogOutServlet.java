@@ -21,7 +21,8 @@ public class LogOutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Start LogOutServlet");
         HttpSession session = req.getSession();
-        session.invalidate();
+        session.removeAttribute("someID");
+        session.removeAttribute("someName");
 
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
         logger.info("Completed LogOutServlet");
